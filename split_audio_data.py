@@ -1,26 +1,19 @@
-import nemo.collections.asr as nemo_asr
-import whisper
-
-import numpy as np
-# Import audio processing library
-import librosa
-# We'll use this to listen to audio
-from IPython.display import Audio, display
-
-from plotly import graph_objects as go
-
-from pydub import AudioSegment
-import soundfile as sf
-
 import glob
 import string
 import json
 import os
+import numpy as np
 
+# Import audio processing library
+import librosa
+from pydub import AudioSegment
+import soundfile as sf
+
+import nemo.collections.asr as nemo_asr
+import whisper
 
 whisper_model = whisper.load_model("base")
 asr_model = nemo_asr.models.EncDecCTCModel.from_pretrained(model_name='QuartzNet15x5Base-En', strict=False)
-
 
 def onewordaudio(inputfolder,
                  keywords,
